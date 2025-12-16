@@ -1,0 +1,250 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdf6f6; /* Fondo rosado muy pálido */
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+/* TIPOGRAFÍA */
+h1, h2 {
+    font-family: 'Dancing Script', cursive; /* Letra estilo manuscrita */
+    color: #d63384; /* Color rosa fuerte */
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh; /* Ocupa toda la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff0f3, #fdf6f6);
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.main-photo {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%; /* Hace la foto redonda */
+    border: 5px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.main-photo:hover {
+    transform: scale(1.05); /* Zoom suave al pasar el mouse */
+}
+
+.btn-scroll {
+    display: inline-block;
+    text-decoration: none;
+    color: #d63384;
+    font-weight: bold;
+    margin-top: 20px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.btn-scroll:hover {
+    border-color: #d63384;
+}
+
+/* GALERÍA */
+.gallery {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* SECCIÓN DE DESCARGAS (PDFs) */
+.downloads {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff0f3;
+}
+
+.downloads h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Botones uno debajo del otro en móvil */
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* ESTILO DE LOS BOTONES */
+.btn-download {
+    text-decoration: none;
+    background-color: #d63384;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(214, 51, 132, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: #a61e61;
+    transform: translateY(-3px); /* Se eleva un poco */
+    box-shadow: 0 6px 15px rgba(214, 51, 132, 0.4);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: #aaa;
+    background-color: white;
+}
+
+/* RESPONSIVE (Pantallas grandes) */
+@media (min-width: 768px) {
+    .button-container {
+        flex-direction: row; /* Botones en fila en PC */
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   ESTILOS MODAL (VERSIÓN CORAZÓN GIGANTE)
+   ========================================= */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.9); /* Fondo negro casi total para resaltar */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor que agrupa corazón y foto */
+.modal-wrapper {
+    position: relative;
+    width: 90vmin;  /* Ocupa el 90% del lado más pequeño de la pantalla */
+    height: 80vmin; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: heartbeat 2s infinite ease-in-out; /* Todo late suavemente */
+}
+
+/* El corazón rojo de fondo */
+.big-heart-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    fill: #ff477e; /* Color del corazón */
+    filter: drop-shadow(0 0 20px rgba(255, 71, 126, 0.6)); /* Resplandor */
+    z-index: 1; /* Detrás de la foto */
+}
+
+/* La imagen real */
+.modal-content {
+    position: relative;
+    z-index: 2; /* Delante del corazón */
+    
+    /* Estos límites aseguran que la foto quepa DENTRO del corazón */
+    max-width: 60%; 
+    max-height: 50%;
+    
+    object-fit: contain; /* NUNCA deforma la imagen */
+    border-radius: 8px; /* Bordes un poco suaves en la foto */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Sombra para separar foto del corazón */
+    background: white; /* Marco blanco fino opcional */
+    padding: 5px; 
+}
+
+/* Texto inferior */
+#caption {
+    margin-top: 10px;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem; /* Letra grande */
+    z-index: 1001;
+    text-shadow: 0 0 10px #ff477e;
+}
+
+/* Botón cerrar */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* Animación de latido */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.card img {
+    cursor: pointer;
+}
